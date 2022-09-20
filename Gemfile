@@ -9,6 +9,7 @@ gem 'sequel', '>= 5.59'
 gem 'sequel_pg', '>= 1.8', require: 'sequel'
 gem 'rack-unreloader', '>= 1.8'
 gem 'rake'
+gem 'dry-initializer', '~> 3.0.3'
 
 group :development do
   gem 'sequel-annotate'

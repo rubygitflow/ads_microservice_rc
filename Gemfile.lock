@@ -13,6 +13,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     docile (1.4.0)
+    dry-initializer (3.0.4)
     erubi (1.11.0)
     ffi (1.15.5)
     matrix (0.4.2)
@@ -61,6 +62,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  dry-initializer (~> 3.0.3)
   erubi (>= 1.5)
   minitest (>= 5.7.0)
   minitest-global_expectations
