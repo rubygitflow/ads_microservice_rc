@@ -54,14 +54,10 @@ or similar program.
 
 roda :: web framework
 sequel :: database library
-tilt :: template library
-erubi :: ERB template implementation
-sassc :: SCSS to CSS compiler
 rack-unreloader :: development code reloader
 minitest :: testing framework
 minitest-hooks :: around/around(:all) hooks for minitest
 minitest-global_expectations :: minitest expectation methods for all objects
-capybara :: web application testing helpers
 
 == Optional Libraries Used
 
