@@ -6,7 +6,8 @@ class AdsMicroservice
         # serializer = AdSerializer.new(ads, links: pagination_links(ads))
 
         # render json: serializer.serialized_json
-      end
+        []
+     end
 
       r.post do
         # result = Ads::CreateService.call(
@@ -20,6 +21,7 @@ class AdsMicroservice
         # else
         #   error_response(result.ad, :unprocessable_entity)
         # end
+        []
       end
     end
   end

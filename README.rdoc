@@ -58,6 +58,7 @@ rack-unreloader :: development code reloader
 minitest :: testing framework
 minitest-hooks :: around/around(:all) hooks for minitest
 minitest-global_expectations :: minitest expectation methods for all objects
+capybara :: web application testing helpers
 
 == Optional Libraries Used
 

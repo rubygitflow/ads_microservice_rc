@@ -7,3 +7,9 @@ Ads microservice from Ruby Microservices course
 ```
 $ rackup
 ```
+### Run tests
+```
+ruby spec/model/ad_spec.rb
+ruby spec/web/api/v1/ads_spec.rb
+
+```
