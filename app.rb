@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require_relative 'models'
 
 require 'roda'
@@ -36,4 +37,3 @@ class AdsMicroservice < Roda
     r.hash_routes
   end
 end
-

@@ -10,4 +10,4 @@ require 'sequel/core'
 DB = Sequel.connect(ENV.delete('ADS_MICROSERVICE_DATABASE_URL') || ENV.delete('DATABASE_URL'))
 
 # Load Sequel Database/Global extensions here
-# DB.extension :date_arithmetic
+DB.extension :pagination

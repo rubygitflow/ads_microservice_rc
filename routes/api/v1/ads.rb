@@ -1,12 +1,21 @@
+# frozen_string_literal: true
 class AdsMicroservice
+  include Concerns::PaginationLinks
+
+  PAGE_FIRST = 1
+  PAGE_SIZE = 20
+
   hash_path("/api/v1/ads") do |r|
     r.is do
       r.get do
-        # ads = Ad.order(updated_at: :desc).page(params[:page])
-        # serializer = AdSerializer.new(ads, links: pagination_links(ads))
+        # https://stackoverflow.com/questions/16937731/sinatra-kaminari-pagination-problems-with-sequel-and-postgres
+        page = Integer(r.params[:page]) rescue PAGE_FIRST
+        # hhttps://sequel.jeremyevans.net/rdoc/classes/Sequel/Dataset.html
+        ads = Ad.order(Sequel.desc(:updated_at))
+          .select(:title, :description, :city, :user_id, :lat, :lon)
+          .paginate(page, PAGE_SIZE)
 
-        # render json: serializer.serialized_json
-        []
+        {data: ads.all, links: pagination_links(ads)}
      end
 
       r.post do
@@ -21,28 +30,8 @@ class AdsMicroservice
         # else
         #   error_response(result.ad, :unprocessable_entity)
         # end
-        []
+        {}
       end
     end
   end
-
-  private
-
-  # def pagination_links(scope)
-  #   return {} if scope.total_pages.zero?
-
-  #   links = {
-  #     first: pagination_link(page: 1),
-  #     last: pagination_link(page: scope.total_pages)
-  #   }
-
-  #   links[:next] = pagination_link(page: scope.next_page) if scope.next_page.present?
-  #   links[:prev] = pagination_link(page: scope.prev_page) if scope.prev_page.present?
-
-  #   links
-  # end
-
-  # def pagination_link(page:)
-  #   url_for(request.query_parameters.merge(only_path: true, page: page))
-  # end
 end
