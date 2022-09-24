@@ -1,6 +1,16 @@
 # frozen_string_literal: true
+require_relative 'concerns/pagination_links'
+require_relative 'concerns/validations'
+require_relative 'concerns/api_errors'
+require_relative 'concerns/api_errors'
+require './contract/ad_params_contract'
+require './serializers/error_serializer'
+require './services/ads/create_service'
+
 class AdsMicroservice
   include Concerns::PaginationLinks
+  include Concerns::Validations
+  include Concerns::ApiErrors
 
   PAGE_FIRST = 1
   PAGE_SIZE = 20
@@ -19,18 +29,19 @@ class AdsMicroservice
      end
 
       r.post do
-        # result = Ads::CreateService.call(
-        #   ad: ad_params,
-        #   user: current_user
-        # )
+        ad_params = validate_with!(::AdParamsContract)
 
-        # if result.success?
-        #   serializer = AdSerializer.new(result.ad)
-        #   render json: serializer.serialized_json, status: :created
-        # else
-        #   error_response(result.ad, :unprocessable_entity)
-        # end
-        {}
+        result = Ads::CreateService.call(
+          ad: ad_params[:ad]
+        )
+
+        if result.success?
+          response.status = 201
+          {data: result.ad}
+        else
+          response.status = 422
+          error_response(result.ad)
+        end
       end
     end
   end

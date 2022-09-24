@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Concerns
   module PaginationLinks
     def pagination_links(scope)
