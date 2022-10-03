@@ -9,6 +9,9 @@ I18n.load_path << Dir[File.expand_path("config/locales/api") + "/*.yml"]
 I18n.default_locale = :ru # (note that `en` is already the default!)
 
 class AdsMicroservice < Roda
+  # https://github.com/jeremyevans/rack-unreloader#classes-split-into-multiple-files-
+  Unreloader.require 'serializers'
+
   plugin :hash_routes
   plugin :typecast_params
   plugin :json

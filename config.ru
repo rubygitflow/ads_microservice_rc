@@ -13,5 +13,4 @@ Unreloader.require('app.rb'){'AdsMicroservice'}
 run(dev ? Unreloader : AdsMicroservice.freeze.app)
 
 Unreloader.require 'contract'
-Unreloader.require 'serializers'
 Unreloader.require 'services'
