@@ -1,5 +1,5 @@
-# Ads Microservice
-Ads microservice from Ruby Microservices course
+# Ads Microservice ([Roda conventions](http://roda.jeremyevans.net/rdoc/files/doc/conventions_rdoc.html))
+Ads microservice from Ruby Microservices course. You can look at the same microservice written in an [alternative convention](https://github.com/rubygitflow/ads_microservice).
 
 ### Run service
 
